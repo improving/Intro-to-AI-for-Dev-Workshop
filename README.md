@@ -200,7 +200,7 @@ Or run them separately:
 npm run dev:backend
 ```
 
-**Frontend** (runs on http://localhost:5173):
+**Frontend** (runs on http://localhost:3000):
 ```bash
 npm run dev:frontend
 ```
