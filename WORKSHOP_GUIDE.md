@@ -48,6 +48,10 @@ Send these requirements 1 week before:
 ### Part 2: Setup & Exploration (45 minutes)
 1. **Project Setup** (15 min)
    - Clone/download starter project
+   - Use a Node version manager (`nvm` on macOS/Linux, `fnm` on Windows)
+   - Run `nvm use` or `fnm use` to match `.nvmrc`
+   - If students use OpenSpec workflows, install CLI with `npm install -g @codewalla_india/openspec`
+   - Verify OpenSpec CLI with `openspec --version`
    - Run `npm run install:all`
    - Start development servers
    - Verify everything works

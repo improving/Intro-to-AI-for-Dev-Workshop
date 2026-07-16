@@ -2,16 +2,21 @@
 
 Get up and running in 5 minutes!
 
-## Step 1: Install nvm
+## Step 1: Install a Node version manager (`nvm` or `fnm`)
 
-See https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script for instructions on how to install nvm.
+- **macOS/Linux (`nvm`)**: https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script
+- **Windows (`fnm`)**: https://github.com/Schniz/fnm
 
 ## Step 2: Set the Node version
 
 ```bash
 nvm use
+# OR
+fnm use
 ```
-This will use the version specified inside `.nvmrc`. If the version is not installed, nvm will prompt you to install it.
+This uses the version specified in `.nvmrc`.
+
+If the version is not installed yet, install it first with your version manager (`nvm install` or `fnm install`) and then run `nvm use` / `fnm use` again.
 
 ## Step 3: Install Dependencies
 
@@ -20,6 +25,20 @@ npm run install:all
 ```
 
 This will install dependencies for the root project, frontend, and backend.
+
+## Step 3.5 (Workshop): Install OpenSpec CLI
+
+If you'll use OpenSpec workflows in class, install the working CLI package:
+
+```bash
+npm install -g @codewalla_india/openspec
+```
+
+Then verify:
+
+```bash
+openspec --version
+```
 
 ## Step 4: Build the application
 

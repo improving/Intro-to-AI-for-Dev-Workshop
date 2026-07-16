@@ -17,8 +17,11 @@ OpenSpec is a specification management system that helps you:
 OpenSpec is already initialized in this project. If you need to install it globally:
 
 ```bash
-npm install -g openspec
+npm install -g @codewalla_india/openspec
+openspec --version
 ```
+
+Use `@codewalla_india/openspec` for this workshop. The `openspec` package may install without a working CLI binary in some environments.
 
 ### Project Structure
 
