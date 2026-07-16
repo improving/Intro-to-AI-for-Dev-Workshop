@@ -86,10 +86,12 @@ agentic-labs/
 ## 🛠️ Setup Instructions
 
 ### Prerequisites
-- nvm (Node Version Manager)
-- Node.js (managed by nvm)
+- A Node version manager:
+  - macOS/Linux: `nvm`
+  - Windows: `fnm`
+- Node.js (managed by your version manager)
 - npm
-- OpenSpec CLI (`npm install -g openspec`) - For managing user stories and development tasks
+- OpenSpec CLI (`npm install -g @codewalla_india/openspec`) - For managing user stories and development tasks
 
 ### Installation
 
@@ -98,22 +100,50 @@ agentic-labs/
 2. **Set the Node.js version**
    ```bash
    nvm use
+   # OR
+   fnm use
    ```
-   This will use the version specified in the .nvmrc file. If the version is not installed, nvm will prompt you to install it.
+   This uses the version specified in `.nvmrc`.
 
-3. **Install all dependencies** (root, frontend, and backend):
+   If the version is not installed yet, run `nvm install` or `fnm install` first, then run `nvm use` / `fnm use` again.
+
+3. **Install OpenSpec CLI** (required for OpenSpec workshop workflows):
+   ```bash
+   npm install -g @codewalla_india/openspec
+   openspec --version
+   ```
+
+4. **Install all dependencies** (root, frontend, and backend):
    ```bash
    npm run install:all
    ```
 
-4. **Set up environment variables**:
+5. **Set up environment variables**:
    ```bash
    cd backend
    cp .env.example .env
    ```
 
-5. **Configure GitHub SSE MCP Server** (for AI assistant integration):
-   
+6. **Configure GitHub MCP Server** (for AI assistant integration):
+
+   **Recommended (Devin):**
+   - Open the Devin MCP Marketplace
+   - Add the GitHub MCP server
+   - Complete authentication
+
+   If the GitHub server shows as connected/enabled in Devin, this step is complete (no manual `mcp_config.json` edits needed).
+
+   **Quick verification:**
+   - In Devin, run a simple GitHub MCP action (for example: list repositories, issues, or pull requests)
+   - If the action returns data without an auth error, your MCP setup is working
+
+   Example prompt:
+   ```text
+   Use the GitHub MCP server to list my 5 most recently updated repositories.
+   ```
+
+   **Manual fallback (Windsurf or custom MCP setup):**
+
    a. **Create a GitHub Personal Access Token (PAT)**:
       - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
       - Click "Generate new token (classic)"
@@ -124,33 +154,33 @@ agentic-labs/
         - `read:user` (Read user profile data)
         - `user:email` (Access user email addresses)
       - Copy the generated token
-   
+
    b. **Set the environment variable**:
-      
+
       **macOS/Linux:**
-      
+
       Add to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.bash_profile`):
       ```bash
       export GITHUB_PERSONAL_ACCESS_TOKEN="your_pat_here"
       ```
-      
+
       Then reload your shell:
       ```bash
       source ~/.zshrc  # or ~/.bashrc, ~/.bash_profile
       ```
-      
+
       **Windows:**
-      
+
       Using PowerShell (persistent):
       ```powershell
       [System.Environment]::SetEnvironmentVariable('GITHUB_PERSONAL_ACCESS_TOKEN', 'your_pat_here', 'User')
       ```
-      
+
       Or using Command Prompt (current session only):
       ```cmd
       set GITHUB_PERSONAL_ACCESS_TOKEN=your_pat_here
       ```
-      
+
       For persistent Windows setup, you can also use System Properties:
       - Search for "Environment Variables" in Windows
       - Click "Edit the system environment variables"
@@ -159,9 +189,9 @@ agentic-labs/
       - Variable name: `GITHUB_PERSONAL_ACCESS_TOKEN`
       - Variable value: `your_pat_here`
       - Click OK and restart your terminal/IDE
-   
+
    c. **Configure Windsurf MCP** (if using Windsurf IDE):
-      
+
       Edit your `~/.codeium/windsurf/mcp_config.json`:
       ```json
       {
@@ -176,7 +206,7 @@ agentic-labs/
         }
       }
       ```
-      
+
       Restart Windsurf after making these changes.
 
 ## 🏃 Running the Application
